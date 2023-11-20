@@ -17,9 +17,29 @@ const router = createRouter({
           component: () => import('@pg/Home/Home.vue')
         },
         {
+          path: '/men',
+          name: 'men',
+          component: () => import('@pg/Men/Men.vue')
+        },
+        {
+          path: '/women',
+          name: 'women',
+          component: () => import('@pg/Women/Women.vue')
+        },
+        {
+          path: '/kids',
+          name: 'kids',
+          component: () => import('@pg/Kids/Kids.vue')
+        },
+        {
           path: '/about',
           name: 'about',
           component: () => import('@pg/About/About.vue')
+        },
+        {
+          path: '/contact',
+          name: 'contact',
+          component: () => import('@pg/Contact/Contact.vue')
         },
       ]
     },
