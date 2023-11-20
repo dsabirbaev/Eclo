@@ -1,8 +1,8 @@
 <template>
-    <header>
+    <header class="overflow-hidden">
         <div class="container mx-auto px-5">
-            <nav class="nav flex items-center justify-between w-full bg-white dark:bg-gray-800">
-                <router-link to="/"><img className="object-cover object-center w-[200px] h-[80px]"
+            <nav class="nav flex items-center justify-between w-full dark:bg-gray-800 h-[80px]">
+                <router-link to="/"><img className="object-cover object-center w-[200px]"
                         src="../../assets/icons/logo.svg" alt="logo" /></router-link>
 
                 <ul className="flex items-center gap-x-3 font-medium text-[15px] text-black dark:text-white">
@@ -42,6 +42,5 @@
 
 .nav li:has(.router-link-exact-active) {
     background-color: rgb(203 213 225);
-    ;
 }
 </style>

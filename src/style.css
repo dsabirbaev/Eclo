@@ -18,6 +18,16 @@ ul {
     list-style-type: none;
 }
 
+body {
+    font-family: PoppinsRegular;
+    font-weight: 400;
+    overflow-x: hidden;
+}
+
+@font-face {
+    font-family: PoppinsRegular;
+    src: url(./assets/fonts/Poppins/Poppins-Regular.ttf);
+}
 
 
 .container {
