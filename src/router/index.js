@@ -44,11 +44,15 @@ const router = createRouter({
       ]
     },
     {
-      path: "/login",
-      name: "login",
-      component: () => import("@pg/Login/Login.vue"), 
+      path: "/signin",
+      name: "signin",
+      component: () => import("@pg/Auth/SignIn.vue"), 
     },
-   
+    {
+      path: "/signup",
+      name: "signup",
+      component: () => import("@pg/Auth/SignUp.vue"), 
+    },
     {
       path: "/:pathMatch(.*)*",
       name: "error",

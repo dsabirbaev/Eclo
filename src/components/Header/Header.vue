@@ -25,7 +25,7 @@
 
                 <div class="flex items-center gap-x-4 cursor-pointer">
                     <span title="search" class="pi pi-search text-[20px]"></span>
-                    <router-link to="/login"><span title="login" class="pi pi-sign-in text-[20px]"></span> </router-link>
+                    <router-link to="/signin"><span title="login" class="pi pi-sign-in text-[20px]"></span> </router-link>
                 </div>
             </nav>
 

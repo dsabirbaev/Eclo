@@ -9,6 +9,7 @@ export default defineConfig({
             {find: "@", replacement: fileURLToPath(new URL("./src", import.meta.url))},
             {find: "@cmp", replacement: fileURLToPath(new URL("./src/components", import.meta.url))},
             {find: "@pg", replacement: fileURLToPath(new URL("./src/pages", import.meta.url))},
+            {find: "@sr", replacement: fileURLToPath(new URL("./src/service", import.meta.url))},
         ],
     },
 });
