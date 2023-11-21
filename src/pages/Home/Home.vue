@@ -3,15 +3,11 @@
 
 
 <template>
-    <section>
-        <div class="container mx-auto px-5">
-            <h1>Home</h1>
-        </div>
-    </section>
+   <Intro/>
 </template>
   
 <script setup>
-
+    import Intro from "@cmp/Intro/Intro.vue";
 </script>
   
 <style lang="scss" scoped></style>

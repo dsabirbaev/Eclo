@@ -2,20 +2,20 @@
     <header class="overflow-hidden">
         <div class="container mx-auto px-5">
             <nav class="nav flex items-center justify-between w-full dark:bg-gray-800 h-[80px]">
-                <router-link to="/"><img className="object-cover object-center w-[200px]"
-                        src="../../assets/icons/logo.svg" alt="logo" /></router-link>
+                <router-link to="/"><img class="h-[80px]"
+                        src="@ass/images/logo.jpg" alt="logo" /></router-link>
 
-                <ul className="flex items-center gap-x-3 font-medium text-[15px] text-black dark:text-white">
-                    <li className="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
+                <ul class="flex items-center gap-x-3 font-medium text-[15px] text-black dark:text-white">
+                    <li class="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
                         <router-link to="/men" class="text-black">Men</router-link>
                     </li>
-                    <li className="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
+                    <li class="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
                         <router-link to="/women" class="text-black">Women</router-link>
                     </li>
-                    <li className="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
+                    <li class="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
                         <router-link to="/kids" class="text-black">Kids</router-link>
                     </li>
-                    <li className="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
+                    <li class="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
                         <router-link to="/about" class="text-black">About Us</router-link>
                     </li>
                     <li className="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">

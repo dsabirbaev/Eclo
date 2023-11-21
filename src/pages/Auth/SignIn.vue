@@ -9,7 +9,7 @@
             <div class="flex flex-col bg-white rounded-lg shadow-2 p-4 w-[500px]">
 
                 <div class="text-center mb-5">
-                    <router-link to="/"><img src="../../assets/images/logo.jpg" alt="Image"  class="mb-1 bg-red-300 border h-[80px]" /> </router-link>    
+                    <router-link to="/"><img src="@ass/images/logo.jpg" alt="Image"  class="mb-1 bg-red-300 border h-[80px]" /> </router-link>    
                     
                     <div class="text-900 text-3xl font-medium mb-3">Welcome Eclo</div>
                     <span class="text-600 font-medium ">Don't have an account?</span>
