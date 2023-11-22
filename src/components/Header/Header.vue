@@ -23,9 +23,18 @@
                     </li>
                 </ul>
 
-                <div class="flex items-center gap-x-4 cursor-pointer">
+                <div v-if="isAuth" class="flex items-center gap-x-4 cursor-pointer">
                     <span title="search" class="pi pi-search text-[20px]"></span>
-                    <router-link to="/signin"><span title="login" class="pi pi-sign-in text-[20px]"></span> </router-link>
+                    <span title="user" class="pi pi-user text-[20px]"></span>
+                    <span title="cart" class="pi pi-shopping-cart text-[20px]"></span>
+                   
+                </div>
+
+                <div v-else class="flex items-center gap-x-4 cursor-pointer">
+                    <span title="search" class="pi pi-search text-[20px]"></span>
+                   
+                    <router-link to="/signin" class="flex items-center justify-center"><span title="login" class="pi pi-sign-in text-[20px]"></span> </router-link>
+                  
                 </div>
             </nav>
 
@@ -35,7 +44,7 @@
 </template>
 
 <script setup>
-
+    const isAuth = localStorage.getItem("token");
 </script>
 
 <style lang="scss" scoped>

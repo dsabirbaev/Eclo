@@ -95,7 +95,7 @@ const onSubmit = handleSubmit((values) => {
         phoneNumber: `+998${values.phone.replace(/\D/g, '')}`,
         password: values.password
     }
-    console.log(user)
+    
     useAuth.login(user).then((res) => {
         console.log(res)
         localStorage.setItem("token", res?.data?.token);

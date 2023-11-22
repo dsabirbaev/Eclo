@@ -4,7 +4,9 @@
 <template>
     <Header />
     <main>
-        <router-view> </router-view>
+        <router-view> 
+            
+        </router-view>
     </main>
     <Footer  />
 </template>
