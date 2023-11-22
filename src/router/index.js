@@ -53,6 +53,11 @@ const router = createRouter({
       component: () => import("@pg/Auth/SignUp.vue"), 
     },
     {
+      path: "/settings",
+      name: "settings",
+      component: () => import("@pg/Settings/Settings.vue"), 
+    },
+    {
       path: "/:pathMatch(.*)*",
       name: "error",
       component: () => import("@pg/Error/Error.vue")
