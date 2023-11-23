@@ -20,6 +20,7 @@
                     <li className="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
                         <router-link to="/contact" class="text-black">Contact</router-link>
                     </li>
+                  
                 </ul>
 
                 <div v-if="isAuth" class="flex items-center gap-x-4 cursor-pointer relative">
@@ -30,10 +31,10 @@
                     <Menu :model="items" v-if="isMenu" class="w-[300px] md:w-15rem absolute right-0 top-[180%] z-50">
                         <template #start>
                             <button v-ripple class=" w-full p-link flex items-center p-2 pl-3">
-                                <Avatar image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png" class="mr-2"
+                                <Avatar :image="`http://165.22.110.111:8080/${userAvatar}`" class="mr-2"
                                     size="large" shape="circle" />
                                 <span class="inline-flex flex-column">
-                                    <span class="font-bold">User</span>
+                                    <span class="font-bold">{{ userName }}</span>
 
                                 </span>
                             </button>
@@ -44,11 +45,11 @@
                         </template>
 
                         <template #item="{ item, props }">
-                            <a v-ripple class="flex items-center" v-bind="props.action"  @click="handleMenuItemClick(item)">
+                            <a v-ripple class="flex items-center" v-bind="props.action" @click="handleMenuItemClick(item)">
                                 <span :class="item.icon" />
                                 <span class="ml-2">{{ item.label }}</span>
-                                
-                               
+
+
                             </a>
                         </template>
 
@@ -72,10 +73,14 @@
 
 <script setup>
 
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import Avatar from 'primevue/avatar';
 import Menu from 'primevue/menu';
+import useUser from "@sr/user/useUser.js";
+
+const userName = ref('');
+const userAvatar = ref('');
 const isAuth = ref(localStorage.getItem("token") !== null);
 const router = useRouter();
 const items = ref([
@@ -107,17 +112,33 @@ const items = ref([
 
 const isMenu = ref(false);
 const handleMenuItemClick = (item) => {
-  if (item.label === 'Logout') {
-    localStorage.clear();
-    isMenu.value = false;
-    isAuth.value = false;
-  }
+    if (item.label === 'Logout') {
+        localStorage.clear();
+        isMenu.value = false;
+        isAuth.value = false;
+    }
 
-  if(item.label === 'Settings'){
-     router.push({ name: "settings" });
-  }
+    if (item.label === 'Settings') {
+        router.push({ name: "settings" });
+    }
 };
 
+const getInfo = () => {
+    useUser.profile().then((res) => {
+        // console.log(res.data.firstName)
+       
+        localStorage.setItem("name", res.data.firstName);
+        localStorage.setItem("photo", res.data.imagePath);
+    }).catch((err) => {
+        console.log(err.message)
+    })
+}
+
+onMounted(() => {
+    getInfo();
+    userName.value = localStorage.getItem("name");
+    userAvatar.value = localStorage.getItem("photo").replace(/\\/g, '/');
+})
 
 
 </script>

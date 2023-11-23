@@ -58,19 +58,22 @@
 </template>
   
 <script setup>
+import { ref } from 'vue';
 import InputMask from 'primevue/inputmask';
 import InputText from 'primevue/inputtext';
 import Checkbox from 'primevue/checkbox';
 import Button from 'primevue/button';
 
-import { useAuth } from "@sr/auth/useAuth.js";
+import  useAuth  from "@sr/auth/useAuth.js";
 import { useRouter } from "vue-router";
 import { useToast } from "primevue/usetoast";
+import { useField, useForm } from 'vee-validate';
+
 const toast = useToast();
 const { handleSubmit } = useForm();
 const router = useRouter();
-import { useField, useForm } from 'vee-validate';
 
+const checked = ref(false);
 const { value: phone, errorMessage: phoneErrorMessage } = useField('phone', validatePhoneField);
 const { value: password, errorMessage: passwordErrorMessage } = useField('password', validatePasswordField);
 
@@ -97,7 +100,6 @@ const onSubmit = handleSubmit((values) => {
     }
     
     useAuth.login(user).then((res) => {
-        console.log(res)
         localStorage.setItem("token", res?.data?.token);
 
         toast.add({ severity: 'success', detail: 'Logged in successfully!', life: 1000 });
