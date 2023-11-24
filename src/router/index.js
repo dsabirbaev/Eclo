@@ -40,6 +40,11 @@ const router = createRouter({
           name: 'contact',
           component: () => import('@pg/Contact/Contact.vue')
         },
+        {
+          path: "/settings",
+          name: "settings",
+          component: () => import("@pg/Settings/Settings.vue"), 
+        },
       ]
     },
     {
@@ -51,11 +56,6 @@ const router = createRouter({
       path: "/signup",
       name: "signup",
       component: () => import("@pg/Auth/SignUp.vue"), 
-    },
-    {
-      path: "/settings",
-      name: "settings",
-      component: () => import("@pg/Settings/Settings.vue"), 
     },
     {
       path: "/:pathMatch(.*)*",
