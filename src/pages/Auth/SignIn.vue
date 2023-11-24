@@ -76,7 +76,7 @@ const router = useRouter();
 const checked = ref(false);
 const { value: phone, errorMessage: phoneErrorMessage } = useField('phone', validatePhoneField);
 const { value: password, errorMessage: passwordErrorMessage } = useField('password', validatePasswordField);
-
+document.title = "Eclo | Sign In";
 function validatePhoneField(value) {
     if (!value) {
         return 'Phone is required.';
