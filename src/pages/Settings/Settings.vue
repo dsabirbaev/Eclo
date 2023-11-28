@@ -35,7 +35,7 @@
                             <div class="flex flex-col relative">
                                 <label for="passportseria" class="block text-900 font-medium mb-1 text-gray-600">Passport
                                     Serial Number</label>
-                                <InputText id="passportseria" v-model.trim="user.lastName" type="text" class="w-full"
+                                <InputText id="passportseria" v-model.trim="user.snumber" type="text" class="w-full"
                                     required />
 
                             </div>
@@ -43,9 +43,9 @@
                         <div class="grow ">
                             <p class="block text-900 font-medium mb-1 text-gray-600 mb-2">Avatar</p>
                             <div class="flex items-center">
-                                <Avatar class="mr-4 bg-red-500" size="xlarge" shape="circle" />
+                                <Avatar  :image="`http://165.22.110.111:8080/${data.imagePath}`" class="mr-4 bg-red-500" size="xlarge" shape="circle" />
 
-                                <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*"
+                                <FileUpload v-model="user.uploadImage" mode="basic" name="demo[]" url="/api/upload" accept="image/*"
                                     :maxFileSize="1000000" @upload="onUpload" class="w-[150px]" />
                             </div>
                         </div>
@@ -71,8 +71,7 @@
 
                             <div class="flex flex-col relative">
                                 <label for="address" class="block text-900 font-medium mb-1 text-gray-600">Address</label>
-                                <InputText id="address" v-model.trim="user.address" type="text" class="w-full"
-                                    required />
+                                <InputText id="address" v-model.trim="user.address" type="text" class="w-full" required />
 
                             </div>
                         </div>
@@ -83,7 +82,8 @@
 
                     </div>
 
-                    <Button type="submit" label="Update Profile" icon="pi pi-spinner" class="w-[200px] bg-green-700 border-green-700" />
+                    <Button type="submit" label="Update Profile" icon="pi pi-spinner"
+                        class="w-[200px] bg-green-700 border-green-700" />
 
 
                 </form>
@@ -96,7 +96,8 @@
 </template>
   
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
+import useUser from "@sr/user/useUser";
 import InputMask from 'primevue/inputmask';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
@@ -107,16 +108,36 @@ import { useToast } from "primevue/usetoast";
 const toast = useToast();
 
 document.title = "Eclo | Settings";
-
+const data = ref([]);
 const user = reactive({
     firstName: "",
     lastName: "",
-    phoneNumber: "",
-    password: ""
+    snumber: "",
+    uploadImage: "",
+    date: "",
+    district: "",
+    region: "",
+    address: "",
+    phoneNumber: ""
 })
 
+const getProfile = async () => {
+    try {
+        const response = await useUser.profile();
+        console.log(response.data);
+        data.value = response.data;
+        user.firstName = response.data.firstName || "";
+        user.lastName = response.data.lastName || "";
+       
+    } catch (error) {
+        console.log(error.message);
+        console.log(error)
+    }
+}
 
-
+onMounted(() => {
+    getProfile();
+})
 </script>
   
 <style lang="scss" scoped></style>
