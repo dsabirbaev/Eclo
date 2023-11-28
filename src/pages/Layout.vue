@@ -3,7 +3,7 @@
 
 <template>
     <Header />
-    <main>
+    <main class="dark:bg-gray-700">
         <router-view> 
             
         </router-view>

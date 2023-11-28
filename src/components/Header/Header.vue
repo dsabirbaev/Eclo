@@ -1,34 +1,34 @@
 <template>
-    <header>
+    <header class="dark:bg-gray-800">
         <div class="container mx-auto px-5">
-            <nav class="nav flex items-center justify-between w-full dark:bg-gray-800 h-[80px]">
+            <nav class="nav flex items-center justify-between w-full h-[80px]">
                 <router-link to="/"><img class="h-[80px]" src="@ass/images/logo.jpg" alt="logo" /></router-link>
 
-                <ul class="flex items-center gap-x-3 font-medium text-[15px] text-black dark:text-white">
+                <ul class="flex items-center gap-x-3 font-medium text-[15px]">
                     <li class="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
-                        <router-link to="/men" class="text-black">Men</router-link>
+                        <router-link to="/men" class="text-black dark:text-white">Men</router-link>
                     </li>
                     <li class="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
-                        <router-link to="/women" class="text-black">Women</router-link>
+                        <router-link to="/women" class="text-black dark:text-white">Women</router-link>
                     </li>
                     <li class="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
-                        <router-link to="/kids" class="text-black">Kids</router-link>
+                        <router-link to="/kids" class="text-black dark:text-white">Kids</router-link>
                     </li>
                     <li class="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
-                        <router-link to="/about" class="text-black">About Us</router-link>
+                        <router-link to="/about" class="text-black dark:text-white">About Us</router-link>
                     </li>
                     <li className="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
-                        <router-link to="/contact" class="text-black">Contact</router-link>
+                        <router-link to="/contact" class="text-black dark:text-white">Contact</router-link>
                     </li>
                   
                 </ul>
 
                 <div v-if="isAuth" class="flex items-center gap-x-4 cursor-pointer relative">
-                    <span title="search" class="pi pi-search text-[20px]"></span>
-                    <span title="user" class="pi pi-user text-[20px]" @click="isMenu = !isMenu"></span>
-                    <span title="cart" class="pi pi-shopping-cart text-[20px]"></span>
+                    <span title="search" class="pi pi-search text-[20px] dark:text-white"></span>
+                    <span title="user" class="pi pi-user text-[20px] dark:text-white" @click="isMenu = !isMenu"></span>
+                    <span title="cart" class="pi pi-shopping-cart text-[20px] dark:text-white"></span>
 
-                    <Menu :model="items" v-if="isMenu" class="w-[300px] md:w-15rem absolute right-0 top-[180%] z-50">
+                    <Menu :model="items" v-if="isMenu" class="w-[300px] md:w-15rem absolute right-0 top-[180%] z-30">
                         <template #start>
                             <button  v-ripple class=" w-full p-link flex items-center p-2 pl-3">
                                 <Avatar :image="`http://165.22.110.111:8080/${userInfo.imagePath}`" class="mr-2"
@@ -73,13 +73,17 @@
 
 <script setup>
 
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted } from "vue";
+import {useDark, useToggle} from "@vueuse/core";
 import { useRouter } from "vue-router";
 import Avatar from 'primevue/avatar';
 import Menu from 'primevue/menu';
 import useUser from "@sr/user/useUser.js";
 document.title = "Eclo | Home";
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 const userInfo = ref([]);
+
 const isAuth = ref(localStorage.getItem("token") !== null);
 const router = useRouter();
 const items = ref([
@@ -95,8 +99,8 @@ const items = ref([
                 icon: 'pi pi-cog',
             },
             {
-                label: 'Messages',
-                icon: 'pi pi-inbox',
+                label: 'Dark mode',
+                icon: 'pi pi-moon',
             },
             {
                 label: 'Logout',
@@ -121,6 +125,12 @@ const handleMenuItemClick = (item) => {
         router.push({ name: "settings" });
         isMenu.value = false;
     }
+    if (item.label === 'Dark mode' || item.label === 'Light mode') {
+        item.label = item.label === 'Dark mode' ? 'Light mode' : 'Dark mode';
+        item.icon = item.icon === 'pi pi-sun' ? 'pi pi-moon' : 'pi pi-sun';
+        toggleDark();
+        isMenu.value = false;
+    }
 };
 
 const getInfo = async() => {
@@ -134,6 +144,7 @@ const getInfo = async() => {
 
 onMounted(() => {
     getInfo();
+    
 })
 
 
