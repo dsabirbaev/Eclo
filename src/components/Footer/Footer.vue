@@ -4,7 +4,7 @@
                 <div class="flex justify-between">
                     <div class="flex flex-col gap-y-2">
                         <router-link to="/">
-                            <img class=" h-[60px] object-cover" src="@ass/images/logo.jpg" alt="logo" />
+                            <img class=" h-[60px] object-cover" src="@ass/icons/logo1.svg" alt="logo" />
                         </router-link>
                         <ul class="flex flex-col gap-y-3 text-[14px] dark:text-white">
                             <li><a href="#" class="flex items-center gap-x-1"><i className='pi pi-facebook text-[20px] text-blue-600'></i> Facebook</a></li>

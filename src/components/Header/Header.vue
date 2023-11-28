@@ -2,7 +2,7 @@
     <header class="dark:bg-gray-800">
         <div class="container mx-auto px-5">
             <nav class="nav flex items-center justify-between w-full h-[80px]">
-                <router-link to="/"><img class="h-[80px]" src="@ass/images/logo.jpg" alt="logo" /></router-link>
+                <router-link to="/"><img class="h-[80px]" src="@ass/icons/logo1.svg" alt="logo" /></router-link>
 
                 <ul class="flex items-center gap-x-3 font-medium text-[15px]">
                     <li class="px-[16px] py-[10px] hover:bg-slate-100 dark:hover:bg-gray-500 rounded-full">
