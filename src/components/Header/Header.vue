@@ -30,11 +30,11 @@
 
                     <Menu :model="items" v-if="isMenu" class="w-[300px] md:w-15rem absolute right-0 top-[180%] z-50">
                         <template #start>
-                            <button v-ripple class=" w-full p-link flex items-center p-2 pl-3">
-                                <Avatar :image="`http://165.22.110.111:8080/${userAvatar}`" class="mr-2"
+                            <button  v-ripple class=" w-full p-link flex items-center p-2 pl-3">
+                                <Avatar :image="`http://165.22.110.111:8080/${userInfo.imagePath}`" class="mr-2"
                                     size="large" shape="circle" />
-                                <span class="inline-flex flex-column">
-                                    <span class="font-bold">{{ userName }}</span>
+                                <span  class="inline-flex flex-column">
+                                    <span class="font-bold">{{ userInfo.firstName }}</span>
 
                                 </span>
                             </button>
@@ -73,14 +73,13 @@
 
 <script setup>
 
-import { ref, onMounted } from "vue";
+import { ref, onMounted, reactive } from "vue";
 import { useRouter } from "vue-router";
 import Avatar from 'primevue/avatar';
 import Menu from 'primevue/menu';
 import useUser from "@sr/user/useUser.js";
-
-const userName = ref('');
-const userAvatar = ref('');
+document.title = "Eclo | Home";
+const userInfo = ref([]);
 const isAuth = ref(localStorage.getItem("token") !== null);
 const router = useRouter();
 const items = ref([
@@ -120,24 +119,21 @@ const handleMenuItemClick = (item) => {
 
     if (item.label === 'Settings') {
         router.push({ name: "settings" });
+        isMenu.value = false;
     }
 };
 
-const getInfo = () => {
-    useUser.profile().then((res) => {
-        // console.log(res.data.firstName)
-       
-        localStorage.setItem("name", res.data.firstName);
-        localStorage.setItem("photo", res.data.imagePath);
-    }).catch((err) => {
-        console.log(err.message)
-    })
+const getInfo = async() => {
+    try {
+        const res = await useUser.profile();
+        userInfo.value = res.data;
+    } catch (err) {
+        console.error(err.message);
+    }
 }
 
 onMounted(() => {
     getInfo();
-    userName.value = localStorage.getItem("name");
-    userAvatar.value = localStorage.getItem("photo").replace(/\\/g, '/');
 })
 
 
