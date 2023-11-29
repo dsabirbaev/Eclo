@@ -129,7 +129,6 @@ const handleMenuItemClick = (item) => {
         item.label = item.label === 'Dark mode' ? 'Light mode' : 'Dark mode';
         item.icon = item.icon === 'pi pi-sun' ? 'pi pi-moon' : 'pi pi-sun';
         toggleDark();
-        isMenu.value = false;
     }
 };
 
