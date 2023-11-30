@@ -3,10 +3,10 @@
 <template>
     <section class="py-10">
         <div class="container">
-            <h2 class="mb-5 font-semibold">Brands</h2>
+            <h2 class="mb-5 font-semibold dark:text-white">Brands</h2>
 
             <div class="my-2">
-                <Carousel :value="brands" :numVisible="3" :numScroll="1" >
+                <Carousel class="brand-carousel" :value="brands" :numVisible="3" :numScroll="1">
                     <template #item="slotProps">
                         <div class="rounded-lg border border-2 m-2 text-center">
 
@@ -14,7 +14,7 @@
                                 :alt="slotProps.data.name"
                                 class="rounded-t-lg  h-[200px] w-[200px] object-top object-cover" />
 
-                            <h4 class="py-2 font-medium text-xl">{{ slotProps.data.name }}</h4>
+                            <h4 class="py-2 font-medium text-xl dark:text-white">{{ slotProps.data.name }}</h4>
 
                         </div>
                     </template>
@@ -46,5 +46,21 @@ onMounted(() => {
 })
 </script>
   
-<style lang="scss" scoped></style>
+<style lang="scss">
+.brand-carousel .p-carousel-indicators {
+    display: flex;
+    column-gap: 10px;
+    margin-top: 20px;
+}
+
+.brand-carousel .p-carousel-indicator .p-link {
+    width: 40px;
+    border-radius: 50px;
+    height: 8px;
+}
+
+.brand-carousel .p-highlight button {
+    background-color: #94a3b8;
+}
+</style>
   
