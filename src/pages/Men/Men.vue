@@ -1,8 +1,8 @@
 
 
 <template>
-    <section>
-        <div class="container mx-auto px-5">
+    <section class="pt-[100px] bg-red-500">
+        <div class="container">
             <h1>men</h1>
         </div>
     </section>

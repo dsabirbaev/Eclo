@@ -14,7 +14,9 @@
                                 :alt="slotProps.data.name"
                                 class="rounded-t-lg  h-[200px] w-[200px] object-top object-cover" />
 
-                            <h4 class="py-2 font-medium text-xl dark:text-white">{{ slotProps.data.name }}</h4>
+                            <div class="border bg-gray-200 w-[200px] mx-auto">
+                                <h4 class="py-2 font-medium text-xl dark:text-white">{{ slotProps.data.name }}</h4>
+                            </div>
 
                         </div>
                     </template>
@@ -28,6 +30,7 @@
 import { ref, onMounted } from 'vue';
 import Carousel from 'primevue/carousel';
 import useBrand from "@sr/brand/useBrand";
+import useProduct from "@sr/product/useProduct";
 const brands = ref([]);
 
 const getBrand = async () => {
@@ -40,6 +43,17 @@ const getBrand = async () => {
         console.log(err.message);
     }
 }
+
+// const getProduct = async () => {
+//     try {
+//         const response = await useProduct.getProduct();
+//         const res = await response.data;
+//         console.log(res);
+//         products.value = res;
+//     } catch (err) {
+//         console.log(err.message)
+//     }
+// }
 
 onMounted(() => {
     getBrand();

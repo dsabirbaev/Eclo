@@ -1,5 +1,5 @@
 <template>
-    <header class="dark:bg-gray-800">
+    <header class="fixed left-0 top-0 z-50 w-full bg-white dark:bg-gray-800">
         <div class="container mx-auto px-5">
             <nav class="nav flex items-center justify-between w-full h-[80px]">
                 <router-link to="/"><img class="h-[80px]" src="@ass/icons/logo1.svg" alt="logo" /></router-link>

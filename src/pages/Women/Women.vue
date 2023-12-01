@@ -2,8 +2,8 @@
 
 
 <template>
-    <section>
-        <div class="container mx-auto px-5">
+    <section class="py-[100px]">
+        <div class="container">
             <h1>women</h1>
         </div>
     </section>
