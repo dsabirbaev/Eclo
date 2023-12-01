@@ -6,7 +6,7 @@
 
 
 <template>
-    <section class="bg-gray-50 pt-[20px] dark:bg-gray-700">
+    <section class="bg-gray-50 pt-[100px] dark:bg-gray-700">
         <Toast />
         <div class="flex flex-col  items-center h-screen w-screen">
 
@@ -33,7 +33,7 @@
                                     class="block text-900 font-medium mb-1 text-gray-600 dark:text-white text-[14px]">Last
                                     Name</label>
                                 <InputText id="surname" v-model.trim="user.lastName" type="text"
-                                    class="w-full dark:text-white" required />
+                                    class="w-full" required />
 
                             </div>
 
