@@ -14,6 +14,7 @@ const useProduct = {
     getProductItem: (id) => api.get(`/common/products/${id}`),
     getProductCount: () => api.get("/common/products/count"),
     getProductSearch: (data) => api.get("/common/products/search", data, {headers}),
+    getCommonProductDetails: () => api.get("/common/product/details"),
 }
 
 export default useProduct;

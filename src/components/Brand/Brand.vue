@@ -30,30 +30,20 @@
 import { ref, onMounted } from 'vue';
 import Carousel from 'primevue/carousel';
 import useBrand from "@sr/brand/useBrand";
-import useProduct from "@sr/product/useProduct";
+
 const brands = ref([]);
 
 const getBrand = async () => {
     try {
         const response = await useBrand.getBrand();
         const res = await response.data;
-        console.log(res)
         brands.value = res;
     } catch (err) {
         console.log(err.message);
     }
 }
 
-// const getProduct = async () => {
-//     try {
-//         const response = await useProduct.getProduct();
-//         const res = await response.data;
-//         console.log(res);
-//         products.value = res;
-//     } catch (err) {
-//         console.log(err.message)
-//     }
-// }
+
 
 onMounted(() => {
     getBrand();

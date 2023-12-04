@@ -1,7 +1,7 @@
 
 
 <template>
-    <section class="pt-[100px] bg-red-500">
+    <section class="pt-[100px]">
         <div class="container">
             <h1>men</h1>
         </div>
